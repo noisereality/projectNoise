@@ -88,13 +88,19 @@ router.delete('/xperience/:id', ensureLogin.ensureLoggedIn('/auth/login'), (req,
 });
 
 router.get('/xperience-list', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-  res.render('xperience-list')
+  Xperience.find(req.body.xperiences)
+  .then(xperience => {
+    res.render('xperience-list', {xperience})
+  })
+  .catch(error => {
+    console.log(error)
+  })
 });
 
 router.get('/users-list', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
   User.find(req.user.users)
-  .then(users => {
-    res.render('users-list', {users})
+  .then(user => {
+    res.render('users-list', {user})
   })
   .catch(error => {
     console.log(error)
