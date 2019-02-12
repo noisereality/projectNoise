@@ -14,7 +14,13 @@ router.get('/', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next) => {
 });
 
 router.get('/profile', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next) =>  {
-  res.render('profile');
+  User.findById(req.user._id)
+    .then(users => {
+      res.render('profile', {users})
+    })
+    .catch(error => {
+      console.log(error)
+    })
 })
 
 router.get('/profile/:id', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
