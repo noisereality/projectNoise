@@ -1,1 +1,12 @@
 <h1>Profile</h1>
+<h2>{{users.username}}</h2>
+<form  method='POST' action='/profile'>
+  <h3>Update profile</h3>
+  <input type="text" name="username" placeholder="User">
+  <input type="password" name="password" placeholder="Password">
+  <button id="update-user">Edit</button>
+  {{#if message }}
+    <div class="error-message">{{ message }}</div>
+  {{/if}}
+</form>
+
