@@ -63,9 +63,22 @@ router.get('/xperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, n
   res.render('xperience')
 });
 
-router.post('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
+router.get('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
   Xperience.findById(req.params.idXperience)
   .then(xperience => {
+    res.render('xperience',{xperience: JSON.stringify(xperience)})
+  })
+  .catch(err => {
+    console.log(err);
+  })
+});
+
+router.post('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
+  
+  Xperience.findById(req.params.idXperience)
+  .then(xperience => {
+    console.log(xperience)
+    res.render('xperience',{xperience: JSON.stringify(xperience)})
     console.log(xperience)
   })
   .catch(err => {

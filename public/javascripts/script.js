@@ -16,7 +16,7 @@ box.forEach(function(elem){
   elem.addEventListener('click', function() {
     if(this.className === 'active'){
       this.className = 'inactive';
-      this.setAttribute('color', '#888888');
+      this.setAttribute('color', '#CCCCCC');
     } else {
       this.className = 'active';
       this.setAttribute('color', '#444488');
@@ -61,7 +61,7 @@ function repeat(time) {
       if(row.className === 'active'){
         row.setAttribute('color', '#444488');
       }else{
-        row.setAttribute('color', '#888888');
+        row.setAttribute('color', '#CCCCCC');
       }
     })
     row=rows[step]
