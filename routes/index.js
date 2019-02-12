@@ -15,8 +15,8 @@ router.get('/', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next) => {
 
 router.get('/profile', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next) =>  {
   User.findById(req.user._id)
-    .then(users => {
-      res.render('profile', {users})
+    .then(user => {
+      res.render('profile', {user})
     })
     .catch(error => {
       console.log(error)
@@ -25,8 +25,13 @@ router.get('/profile', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, nex
 
 router.get('/profile/:id', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
     User.findById(req.params.id)
-    .then(users => {
-      res.render('profile', {users})
+    .then(user => {
+      let editable = false
+      if (user.id == req.user.id){
+          editable = true
+      }
+      console.log(editable)
+      res.render('profile', {user, editable})
     })
     .catch(error => {
       console.log(error)
@@ -57,7 +62,6 @@ router.post('/profile', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, ne
   console.log(error)
   });
 })
-
 
 router.get('/xperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
   res.render('xperience')
@@ -97,13 +101,23 @@ router.delete('/xperience/:id', ensureLogin.ensureLoggedIn('/auth/login'), (req,
 });
 
 router.get('/xperience-list', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-  res.render('xperience-list')
+  Xperience.find(req.body.xperiences)
+  .then(xperience => {
+    res.render('xperience-list', {xperience})
+  })
+  .catch(error => {
+    console.log(error)
+  })
 });
 
 router.get('/users-list', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-  res.render('users-list')
+  User.find(req.user.users)
+  .then(user => {
+    res.render('users-list', {user})
+  })
+  .catch(error => {
+    console.log(error)
+  })
 });
-
-
 
 module.exports = router;

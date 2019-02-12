@@ -1,5 +1,8 @@
-<h1>user list</h1>
-<h1>name</h1>
-{{#each users}}
-<h2>{{this.users.username}}</h2>
+<h1>users</h1>
+{{#each user}}
+<ul>
+  <li>{{this.username}}
+    <a href="/profile/{{this.id}} ">profile</a></li>
+</ul>
 {{/each}}
+
