@@ -6,10 +6,11 @@
   <input type="text" name="username" value="{{user.username}}" placeholder="User">
   <input type="password" name="password" placeholder="Password">
   <button id="update-user">Edit</button>
-
-  {{#if message }}
+{{#if message }}
     <div class="error-message">{{ message }}</div>
   {{/if}}
   {{/if}}
 </form>
+  <a href="/auth/login">Login</a>
+  <a href="/auth/users-list">Users</a>
 

@@ -16,7 +16,11 @@ router.get('/', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next) => {
 router.get('/profile', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next) =>  {
   User.findById(req.user._id)
     .then(user => {
-      res.render('profile', {user})
+      let editable = false
+      if (user.id == req.user.id){
+          editable = true
+      }
+      res.render('profile', {user, editable})
     })
     .catch(error => {
       console.log(error)
@@ -30,7 +34,6 @@ router.get('/profile/:id', ensureLogin.ensureLoggedIn('/auth/login'), (req, res,
       if (user.id == req.user.id){
           editable = true
       }
-      console.log(editable)
       res.render('profile', {user, editable})
     })
     .catch(error => {
@@ -41,6 +44,11 @@ router.get('/profile/:id', ensureLogin.ensureLoggedIn('/auth/login'), (req, res,
 router.post('/profile', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
   let username = req.body.username
   let password = req.body.password
+  
+  if (username !== null) {
+    res.render("profile", { message: "The username already exists" });
+    return;
+  }
   
   if (username === "" || password === "") {
     res.render("profile", { message: "Indicate username and password" });

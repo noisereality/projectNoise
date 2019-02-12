@@ -35,6 +35,10 @@ let samples = [
     name: "clap",
     url: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/969699/909-clap-vm.mp3"
   }
+  {
+    name: "hat",
+    url: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/969699/808-hihat-vm.mp3"
+  }
 ]
 
 Sample.deleteMany()
@@ -45,6 +49,7 @@ Sample.deleteMany()
     const sample1 = samplesCreated[0]._id
     const sample2 = samplesCreated[1]._id
     const sample3 = samplesCreated[2]._id
+    const sample4 = samplesCreated[3]._id
 
     let xperiences = [
       {
@@ -61,12 +66,20 @@ Sample.deleteMany()
         type: "electro",
         stars: 5,
         loops: [{
-          sample: sample2,
+          sample: sample1,
           start: [0, 4, 8, 12]
         },
         {
+          sample: sample2,
+          start: [0, 8]
+        },
+        {
           sample: sample3,
-          start: [1, 3, 5, 7]
+          start: [1,2,3,4]
+        },
+        {
+          sample: sample4,
+          start: [2, 6, 10, 14]
         }]
       },
       {
