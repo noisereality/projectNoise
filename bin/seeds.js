@@ -34,7 +34,7 @@ let samples = [
   {
     name: "clap",
     url: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/969699/909-clap-vm.mp3"
-  }
+  },
   {
     name: "hat",
     url: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/969699/808-hihat-vm.mp3"
