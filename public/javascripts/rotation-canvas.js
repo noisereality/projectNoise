@@ -24,16 +24,17 @@ window.onload = init
 
             context.clearRect(0, 0, canvasDimensions.w, canvasDimensions.h);
             var nSquares = 10
-            for (var square = 25; square <= 25 * nSquares; square += 25) {
+            for (var square = 0; square <= 50 * nSquares; square += 6) {
                 
                 context.save();
                 
-                angle += 360 / nSquares
+                // angle += 360 / nSquares
                 context.translate(canvasDimensions.w / 2, canvasDimensions.h / 2)
-                context.rotate(angle * Math.PI / 180);
-                context.fillStyle = `rgba(${Math.random () * 255}, 0, 0, 0.1)`
+                // context.rotate(angle * Math.PI / 180);
+                context.strokeStyle = "#ADB0AB";
                 context.strokeRect(-(square / 2), -(square / 2), square, square);
                 
                 context.restore();
             }
+
         }
