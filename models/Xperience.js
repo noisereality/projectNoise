@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
+const Sample = require("./Sample")
 
 const xperienceSchema = new Schema({
   name: String,

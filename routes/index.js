@@ -69,6 +69,7 @@ router.get('/xperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, n
 
 router.get('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
   Xperience.findById(req.params.idXperience)
+  .populate("loops.sample")
   .then(xperience => {
     res.render('xperience',{xperience: JSON.stringify(xperience)})
   })
