@@ -16,7 +16,7 @@ box.forEach(function(elem){
   elem.addEventListener('click', function() {
     if(this.className === 'active'){
       this.className = 'inactive';
-      this.setAttribute('color', '#888888');
+      this.setAttribute('color', '#CCCCCC');
     } else {
       this.className = 'active';
       this.setAttribute('color', '#444488');
@@ -46,35 +46,35 @@ function randomColors() {
 
 
 
-var synth = new Tone.MembraneSynth().toMaster()
+// var synth = new Tone.MembraneSynth().toMaster()
 
-const rows = document.querySelectorAll("a-box"),
-notes = ['G5', 'C5', 'F4', 'A2'];
-let index = 0;
+// const rows = document.querySelectorAll("a-box"),
+// notes = ['G5', 'C5', 'F4', 'A2'];
+// let index = 0;
 
-Tone.Transport.scheduleRepeat(repeat, '16n');
-Tone.Transport.start();
+// Tone.Transport.scheduleRepeat(repeat, '16n');
+// Tone.Transport.start();
 
-function repeat(time) {
-    let step = index % 16;
-    rows.forEach(function(row){
-      if(row.className === 'active'){
-        row.setAttribute('color', '#444488');
-      }else{
-        row.setAttribute('color', '#888888');
-      }
-    })
-    row=rows[step]
-    if(row.className === 'active'){
-      synth.triggerAttackRelease(notes[3], '8n', time);
-      row.setAttribute('color', '#222288');
-    }else{
-      row.setAttribute('color', '#667766');
-    }
+// function repeat(time) {
+//     let step = index % 16;
+//     rows.forEach(function(row){
+//       if(row.className === 'active'){
+//         row.setAttribute('color', '#444488');
+//       }else{
+//         row.setAttribute('color', '#CCCCCC');
+//       }
+//     })
+//     row=rows[step]
+//     if(row.className === 'active'){
+//       synth.triggerAttackRelease(notes[3], '8n', time);
+//       row.setAttribute('color', '#222288');
+//     }else{
+//       row.setAttribute('color', '#667766');
+//     }
     
-    index++
+//     index++
   
-}
+// }
 
 // //create a loop
 // var loop = new Tone.Loop(function(time){
