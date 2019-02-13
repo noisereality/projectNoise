@@ -28,9 +28,9 @@ window.onload = init
                 
                 context.save();
                 
-                // angle += 360 / nSquares
+                angle += 360 / nSquares
                 context.translate(canvasDimensions.w / 2, canvasDimensions.h / 2)
-                // context.rotate(angle * Math.PI / 180);
+                context.rotate(angle * Math.PI / 180);
                 context.strokeStyle = "#ADB0AB";
                 context.strokeRect(-(square / 2), -(square / 2), square, square);
                 

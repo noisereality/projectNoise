@@ -2,16 +2,16 @@ html, body {
   overflow: hidden;
   margin: 0;
   padding: 0;
+  background-color: #F7F7F7;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font-size: 20px;}
 
 a {
   color: #00B7FF;
   align-items: flex-start;
-  
- 
 }
 
 h1 {
@@ -32,31 +32,49 @@ h1 {
   float: left;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
 
 .container a:hover {
-  background-color: #ddd;
+  background-color: #ADB0AB;
   color: black;
 }
 
 .container a.active {
-  background-color: #4CAF50;
   color: white;
 }
 
 .flex-item {
-  background: tomato;
-  padding: 5px;
   width: 100px;
   height: 100px;
-  margin: 10px;
-  
   line-height: 100px;
-  color: white;
-  font-weight: bold;
-  font-size: 2em;
-  text-align: center;
+  
+}
+
+.container-users ul {
+ padding: 0px;
+ margin-top:10px;
+ margin-bottom: 10px;
+ margin-left: 80px;
+ margin-right: 80px;
+
+}
+
+.container-users {
+  overflow: hidden;
+  display: inline;
+  justify-content: center;
+
+}
+
+.flex-item-users {
+  list-style-type: none;
+  font-family: monospace;
+}
+
+.container-signup {
+  overflow: hidden;
+  display: inline;
+  justify-content: center;
 }

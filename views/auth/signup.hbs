@@ -1,28 +1,28 @@
-<h2>Signup</h2>
+<h2 class="flex-item-users">Signup</h2>
 
-<form action="/auth/signup" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
+<form class="container-users" action="/auth/signup" method="POST" id="form-container">
+  <label class="flex-item-users" for="username">Username</label>
+  <input class="flex-item-users" id="username" type="text" name="username" placeholder="JonSnow">
 
   <br><br>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
+  <label class="flex-item-users" for="password">Password</label>
+  <input class="flex-item-users" id="password" type="password" name="password" placeholder="Your password">
   
   <br><br>
 
-  <label for="email">Email</label>
-  <input id="email" type="email" name="email" placeholder="Your email">
+  <label class="flex-item-users" for="email">Email</label>
+  <input class="flex-item-users" id="email" type="email" name="email" placeholder="Your email">
   <br>
   {{#if message }}
-    <div class="error-message">{{ message }}</div>
+    <div class="error-message flex-item-users">{{ message }}</div>
   {{/if}}
 
   <br><br>
 
-  <button>Create account</button>
+  <button class="flex-item-users">Create account</button>
 
-  <p class="account-message">
+  <p class="account-message flex-item-users">
     Do you already have an account?
     <a href="/auth/login">Login</a>
   </p>
