@@ -1,8 +1,11 @@
 <h1>users</h1>
+<div class="container-users">
 {{#each user}}
 <ul>
-  <li>{{this.username}}
-    <a href="/profile/{{this.id}} ">profile</a></li>
+  <li class="flex-item-users">{{this.username}}
+    <a href="/profile/{{this.id}} ">profile</a>
+  </li>
 </ul>
 {{/each}}
+</div>
 

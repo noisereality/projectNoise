@@ -1,8 +1,80 @@
+html, body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #F7F7F7;
+  font-family: 'Roboto', sans-serif;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font-size: 20px;}
 
 a {
-  color: #00B7FF; }
+  color: #00B7FF;
+  align-items: flex-start;
+}
 
-/*# sourceMappingURL=style.css.map */
+h1 {
+  font-size: 60px;
+  font-family: monospace;
+  font-weight: bold;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+  overflow: hidden;
+}
+
+.container a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.container a:hover {
+  background-color: #ADB0AB;
+  color: black;
+}
+
+.container a.active {
+  color: white;
+}
+
+.flex-item {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  
+}
+
+.container-users ul {
+ padding: 0px;
+ margin-top:10px;
+ margin-bottom: 10px;
+ margin-left: 80px;
+ margin-right: 80px;
+
+}
+
+.container-users {
+  overflow: hidden;
+  display: inline;
+  justify-content: center;
+
+}
+
+.flex-item-users {
+  list-style-type: none;
+  font-family: monospace;
+}
+
+.container-signup {
+  overflow: hidden;
+  display: inline;
+  justify-content: center;
+}

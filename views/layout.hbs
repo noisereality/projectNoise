@@ -6,14 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
+  <style>@import url('https://fonts.googleapis.com/css?family=Roboto');</style>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/13.7.3/Tone.js'></script>
 </head>
 <body>
 
-  <nav>
-    <a href="/">Home</a>
-    <a href="/auth/signup">Signup</a>
-    <a href="/auth/logout">Logout</a>
+  <nav class="container">
+    <a class="flex-item"href="/">Home</a>
+    <a class="flex-item"href="/auth/signup">Signup</a>
+    <a class="flex-item"href="/auth/logout">Logout</a>
   </nav>
 
   {{{body}}}
