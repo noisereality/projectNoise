@@ -10,8 +10,9 @@ body {
   font-size: 20px;}
 
 a {
-  color: #00B7FF;
+  color: #A2238D;
   align-items: flex-start;
+  text-decoration: none;
 }
 
 h1 {
@@ -19,6 +20,41 @@ h1 {
   font-family: monospace;
   font-weight: bold;
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  padding-bottom: 25px;
+  padding-top: 15px;
+}
+
+h3 {
+  text-align: center;
+}
+
+.container-nav {
+  display: flex;
+  justify-content: center;
+  background-color: #333;
+  overflow: hidden;
+}
+
+.container-nav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.container-nav a:hover {
+  background-color: #F16522;
+  color: black;
+}
+
+.container-nav a.active {
+  color: white;
 }
 
 .container {
@@ -37,7 +73,7 @@ h1 {
 }
 
 .container a:hover {
-  background-color: #ADB0AB;
+  background-color: #F16522;
   color: black;
 }
 
@@ -45,36 +81,40 @@ h1 {
   color: white;
 }
 
-.flex-item {
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
-  
-}
-
 .container-users ul {
- padding: 0px;
- margin-top:10px;
- margin-bottom: 10px;
- margin-left: 80px;
- margin-right: 80px;
-
+  padding: 0px;
+  margin-top:10px;
+  margin-bottom: 10px;
+  margin-left: 80px;
+  margin-right: 80px;
+  
 }
 
 .container-users {
   overflow: hidden;
   display: inline;
   justify-content: center;
-
-}
-
-.flex-item-users {
-  list-style-type: none;
-  font-family: monospace;
 }
 
 .container-signup {
   overflow: hidden;
   display: inline;
+  justify-content: center;
+}
+
+.flex-item {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+}
+
+.flex-item-users {
+  list-style-type: none;
+  font-family: monospace;
+  margin: 5px;
+}
+
+.contain-center {
+  display: grid;
   justify-content: center;
 }
