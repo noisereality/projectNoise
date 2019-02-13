@@ -4,54 +4,57 @@ let rows;
 let loops;
 
 function loadXperience(xperience){
-  let xperienceEnt = document.querySelector("#xperience-ent");
-  xperienceEnt.innerHTML = "";
-  let loopEnt
-  let newBox
-  xperience.loops.forEach((loop,index) => {
+  if(xperience){
+    xper = xperience;
+    let xperienceEnt = document.querySelector("#xperience-ent");
+    xperienceEnt.innerHTML = "";
+    let loopEnt
+    let newBox
+    xperience.loops.forEach((loop,index) => {
 
-    loopEnt = document.createElement("a-entity")
-    loopEnt.setAttribute("class", "loop-ent")
+      loopEnt = document.createElement("a-entity")
+      loopEnt.setAttribute("class", "loop-ent")
 
-    for(var i=0; i<16; i++){
-      newBox = document.createElement("a-box")
-      //console.log(loop.start[i])
-      if(loop.start.includes(i)){
-        newBox.setAttribute("class", "active");
-      }else{
-        newBox.setAttribute("class", "inactive");
+      for(var i=0; i<16; i++){
+        newBox = document.createElement("a-box")
+        if(loop.start.includes(i)){
+          newBox.setAttribute("class", "active");
+        }else{
+          newBox.setAttribute("class", "inactive");
+        }
+        newBox.setAttribute("sound", loop.sample.name);
+        newBox.object3D.position.set(-8+(i*1.1), 2+(index*1.1), -9);
+
+        loopEnt.appendChild(newBox); 
       }
-      newBox.setAttribute("sound", loop.sample.name);
-      newBox.object3D.position.set(-8+(i*1.1), 2+(index*1.1), -9);
+      xperienceEnt.appendChild(loopEnt); 
+    });
 
-      loopEnt.appendChild(newBox); 
-    }
-    xperienceEnt.appendChild(loopEnt); 
-  });
-
-  loadData(xperience)
+    loadData()
+  }else{
+    loadData();
+  }
   
 }
 
-function loadData(xperience){
+function loadData(){
 
   let players = new Object;
-  xperience.loops.forEach((loop,index) => {
+  xper.loops.forEach((loop,index) => {
     players[loop.sample.name] = loop.sample.url;
   });
 
   var multiPlayer = new Tone.Players(players, function(){
-    startSounds(multiPlayer,xperience).toMaster()
+    startSounds(multiPlayer).toMaster()
   });
 
 }
 
 
-function startSounds(multiPlayer,xperience){
+function startSounds(multiPlayer){
   rows = document.querySelectorAll("a-box")
   loops = document.querySelectorAll(".loop-ent")
   multi = multiPlayer;
-  xper = xperience;
   Tone.Transport.scheduleRepeat(repeatLoop, '16n');
   Tone.Transport.start();
 

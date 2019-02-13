@@ -3,6 +3,7 @@ const router  = express.Router();
 const ensureLogin = require('connect-ensure-login')
 const Xperience = require("../models/Xperience");
 const User = require('../models/User')
+const Sample = require('../models/Sample')
 
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
@@ -76,12 +77,16 @@ router.get('/xperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, n
 });
 
 router.get('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-  Xperience.findById(req.params.idXperience)
-  .populate("loops.sample")
-  .then(xperience => {
-    res.render('xperience',{xperience: JSON.stringify(xperience)})
-  })
-  .catch(err => {
+  Sample.find().then(samples =>{
+    Xperience.findById(req.params.idXperience)
+    .populate("loops.sample")
+    .then(xperience => {
+      res.render('xperience',{xperience: JSON.stringify(xperience), samples: JSON.stringify(samples)})
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }).catch(err => {
     console.log(err);
   })
 });
