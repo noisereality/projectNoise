@@ -1,19 +1,26 @@
-  <nav class="container">
-    <a class="flex-item" href="/auth/login">Login</a>
-    <a class="flex-item" href="/users-list">Users</a>
-  </nav>
+<nav class="container-nav">
+  <a class="flex-item"href="/">Home</a>
+  <a class="flex-item"href="/auth/signup">Signup</a>
+  <a class="flex-item"href="/auth/logout">Logout</a>
+</nav>
+  
+<nav class="container">
+  <a class="flex-item" href="/auth/login">Login</a>
+  <a class="flex-item" href="/users-list">Users</a>
+</nav>
 
+<div class="contain-center">
 <h1>Profile</h1>
-<h2>{{user.username}}</h2>
+<h3 class="flex-item-users">{{user.username}}</h3>
 {{#if editable}}
 <form  method='POST' action='/profile'>
-  <h3>Update profile</h3>
-  <input type="text" name="username" value="{{user.username}}" placeholder="User">
-  <input type="password" name="password" placeholder="Password">
-  <button id="update-user">Edit</button>
+  <h3 class="flex-item-users">Update profile</h3>
+  <input class="flex-item-users" type="text" name="username" value="{{user.username}}" placeholder="User">
+  <input class="flex-item-users" type="password" name="password" placeholder="Password">
+  <button  class="flex-item-users"id="update-user">Edit</button>
 {{#if message }}
-    <div class="error-message">{{ message }}</div>
-  {{/if}}
-  {{/if}}
+  <div class="error-message flex-item-users">{{ message }}</div>
+{{/if}}
+{{/if}}
 </form>
-
+</div>
