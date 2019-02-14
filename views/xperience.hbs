@@ -38,7 +38,9 @@
     </a-entity> --}}
   </a-entity>
   
-  <a-box id="save-btn" position="6 1 -2" rotation="30 120 0" color="#00FF00"></a-box>
+  <a-entity id="save-btn-ent">
+    <a-box id="save-btn" position="6 1 -2" rotation="30 120 0" color="#00FF00"></a-box>
+  </a-entity>
 
   <a-plane position="0 -1 -4" rotation="-90 0 0" width="30" height="30" color="#444444"></a-plane>  
   <a-sky color="#CCCCFF"></a-sky>
@@ -49,5 +51,5 @@
   window.xperience = {{{xperience}}}
   window.samples = {{{samples}}}
   window.enableSave = {{{enableSave}}}
-  loadXperience(xperience,samples,xperienceName, enableSave)
+  loadXperience(xperience,samples,xperienceName,enableSave)
 </script>
