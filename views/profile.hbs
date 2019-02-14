@@ -14,7 +14,7 @@
 <h3 class="flex-item-users">{{user.username}}</h3>
 {{#if editable}}
 <form  method='POST' action='/profile'>
-  <h3 class="flex-item-users">Update profile</h3>
+  <p class="flex-item-users">Update profile</p>
   <input class="flex-item-users" type="text" name="username" value="{{user.username}}" placeholder="User">
   <input class="flex-item-users" type="password" name="password" placeholder="Password">
   <button  class="flex-item-users"id="update-user">Edit</button>
