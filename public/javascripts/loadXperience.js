@@ -3,45 +3,51 @@ let index = 0;
 let rows;
 let loops;
 
-function loadXperience(xperience){
+function loadXperience(xperience, samples){
   if(xperience){
     xper = xperience;
     let xperienceEnt = document.querySelector("#xperience-ent");
     xperienceEnt.innerHTML = "";
     let loopEnt
     let newBox
-    xperience.loops.forEach((loop,index) => {
-
+    samples.forEach((sample, index) =>{
+      let loop = xperience.loops.find(loop => loop.sample.name === sample.name )
       loopEnt = document.createElement("a-entity")
       loopEnt.setAttribute("class", "loop-ent")
+      if(loop){
+        for(var i=0; i<16; i++){
+          newBox = document.createElement("a-box")
+          if(loop.start.includes(i)){
+            newBox.setAttribute("class", "active");
+          }else{
+            newBox.setAttribute("class", "inactive");
+          }
+          newBox.setAttribute("sound", loop.sample.name);
+          newBox.object3D.position.set(-8+(i*1.1), 2+(index*1.1), -9);
 
-      for(var i=0; i<16; i++){
-        newBox = document.createElement("a-box")
-        if(loop.start.includes(i)){
-          newBox.setAttribute("class", "active");
-        }else{
-          newBox.setAttribute("class", "inactive");
+          loopEnt.appendChild(newBox); 
         }
-        newBox.setAttribute("sound", loop.sample.name);
-        newBox.object3D.position.set(-8+(i*1.1), 2+(index*1.1), -9);
-
-        loopEnt.appendChild(newBox); 
+      }else{
+        for(var i=0; i<16; i++){
+          newBox = document.createElement("a-box")
+          newBox.setAttribute("class", "inactive");
+          newBox.setAttribute("sound", sample.name);
+          newBox.object3D.position.set(-8+(i*1.1), 2+(index*1.1), -9);
+          loopEnt.appendChild(newBox); 
+        }
       }
       xperienceEnt.appendChild(loopEnt); 
-    });
+    })
 
-    loadData()
-  }else{
-    loadData();
+    loadData(samples)
   }
-  
 }
 
 function loadData(){
 
   let players = new Object;
-  xper.loops.forEach((loop,index) => {
-    players[loop.sample.name] = loop.sample.url;
+  samples.forEach((sample,index) => {
+    players[sample.name] = sample.url;
   });
 
   var multiPlayer = new Tone.Players(players, function(){
@@ -86,4 +92,9 @@ function repeatLoop(time) {
       }
     })
     index++
+
+}
+
+function randomColors() {
+  return '#' + Math.floor(Math.random() * 16777215).toString(16);
 }

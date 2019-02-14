@@ -7,8 +7,8 @@
   <a-entity laser-controls line="color: red; opacity: 0.75"></a-entity>
   <a-entity tracked-controls="controller: 0; idPrefix: OpenVR"></a-entity>
   {{!-- <a-entity light="type:directional; castShadow:true;" position="2 5 1"></a-entity> --}}
-  {{!-- <a-light type="spot" color="#FFFFFF" position="-10 10 0" look-at="#cen"></a-light> --}}
-  <a-light type="point" color="#FFFFFF" position="10 20 10"></a-light>
+  {{!-- <a-light type="spot" color="#FFFFFF" position="-10 10 0" look-at="#cen"></a-light>
+  <a-light class="foco" type="point" color="#0000FF" position="10 20 10"></a-light> --}}
 
   <a-entity id="xperience-ent">
     <a-entity id="loop-ent">
@@ -38,11 +38,12 @@
   </a-entity>
 
 
-
-  <a-plane position="0 -1 -4" rotation="-90 0 0" width="30" height="30" color="#444444"></a-plane>  <a-sky color="#CCCCFF"></a-sky>
+  <a-plane position="0 -1 -4" rotation="-90 0 0" width="30" height="30" color="#444444"></a-plane>  
+  <a-sky color="#CCCCFF"></a-sky>
   
 </a-scene>
 <script>
   window.xperience = {{{xperience}}}
-  loadXperience(xperience)
+  window.samples = {{{samples}}}
+  loadXperience(xperience,samples)
 </script>
