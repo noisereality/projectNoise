@@ -3,9 +3,10 @@ let index = 0;
 let rows;
 let loops;
 
-function loadXperience(xperience, samples){
+function loadXperience(xperience, samples, xperienceName){
     let xperienceEnt = document.querySelector("#xperience-ent");
     xperienceEnt.innerHTML = "";
+    xperienceEnt.setAttribute("name", xperienceName)
     let loopEnt
     let newBox
     let loop 
@@ -16,6 +17,7 @@ function loadXperience(xperience, samples){
       loopEnt = document.createElement("a-entity")
       loopEnt.setAttribute("class", "loop-ent")
       if(loop){
+        loopEnt.setAttribute("sampleId", loop.sample._id);
         for(var i=0; i<16; i++){
           newBox = document.createElement("a-box")
           if(loop.start.includes(i)){
@@ -29,6 +31,7 @@ function loadXperience(xperience, samples){
           loopEnt.appendChild(newBox); 
         }
       }else{
+        loopEnt.setAttribute("sampleId", sample._id);
         for(var i=0; i<16; i++){
           newBox = document.createElement("a-box")
           newBox.setAttribute("class", "inactive");

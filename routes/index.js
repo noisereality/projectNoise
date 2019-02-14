@@ -74,7 +74,7 @@ router.post('/profile', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, ne
 
 router.get('/xperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
   Sample.find().then(samples =>{
-      res.render('xperience',{xperience: "undefined", samples: JSON.stringify(samples)})
+      res.render('xperience',{xperience: "undefined", samples: JSON.stringify(samples), xperienceName: JSON.stringify(req.query.xperienceName)})
   }).catch(err => {
     console.log(err);
   })
@@ -85,7 +85,7 @@ router.get('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'),
     Xperience.findById(req.params.idXperience)
     .populate("loops.sample")
     .then(xperience => {
-      res.render('xperience',{xperience: JSON.stringify(xperience), samples: JSON.stringify(samples)})
+      res.render('xperience',{xperience: JSON.stringify(xperience), samples: JSON.stringify(samples), xperienceName: xperience.name})
     })
     .catch(err => {
       console.log(err);
@@ -111,7 +111,30 @@ router.put('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'),
 });
 
 router.post('/xperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-  console.log("ea")
+
+  Xperience.create(req.body.xperience)
+  .then(xperience => {
+    User.findById(req.user._id).populate("xperiences")
+    .then(user => {
+      let arrayXperiences = user.xperiences
+      arrayXperiences.push(xperience._id)
+      User.findByIdAndUpdate(req.user._id, {xperiences:arrayXperiences})
+      .then(users => {
+        console.log("ok")
+      })
+      .catch(error => {
+      console.log(error)
+      });
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }).catch(error => {
+    console.log(error)
+  })
+
+
+  
 });
 
 router.delete('/xperience/:id', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
