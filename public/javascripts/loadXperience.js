@@ -2,8 +2,10 @@ let multi,xper;
 let index = 0;
 let rows;
 let loops;
+let melodyStart = "";
+let melodyOn = "ambient";
 
-function loadXperience(xperience, samples, xperienceName, enableSave){
+function loadXperience(xperience, samples, xperienceName, enableSave, melodies){
     let xperienceEnt = document.querySelector("#xperience-ent");
     let saveBtn = document.querySelector("#save-btn-ent");
     if(!enableSave){
@@ -47,14 +49,18 @@ function loadXperience(xperience, samples, xperienceName, enableSave){
       xperienceEnt.appendChild(loopEnt); 
     })
 
-    loadData(samples)
+    loadData(samples, melodies)
 }
 
-function loadData(){
+function loadData(samples, melodies){
 
   let players = new Object;
   samples.forEach((sample,index) => {
     players[sample.name] = sample.url;
+  });
+
+  melodies.forEach((melody,index) => {
+    players[melody.name] = melody.url;
   });
 
   var multiPlayer = new Tone.Players(players, function(){
@@ -68,27 +74,40 @@ function startSounds(multiPlayer){
   rows = document.querySelectorAll("#xperience-ent a-box")
   loops = document.querySelectorAll(".loop-ent")
   multi = multiPlayer;
+
+  let ambient = document.querySelector("#ambientMelody")
+  let electro = document.querySelector("#technoMelody")    
+  let techno = document.querySelector("#electroMelody")
+
+  if(ambient.className === 'active'){
+    melodyStart = "ambient"
+    multi.get("ambient").toMaster().start()
+  }else if(electro.className === 'active'){
+    melodyStart = "electro"
+    multi.get("electro").toMaster().start()
+  }else if(techno.className === 'active'){
+    melodyStart = "techno"
+    multi.get("techno").toMaster().start()
+  }
+
   Tone.Transport.scheduleRepeat(repeatLoop, '16n');
   Tone.Transport.start();
-
-}
-
-function loadMelodies(audioAmbient, audioElectro, audioTechno) {
-  let audioAmbient = new Audio('https://archive.org/download/XperienceAmbient/XperienceAmbient.mp3');
-  audio.play();
-  let audioElectro = new Audio('https://archive.org/download/XperienceAmbient/XperienceElectro.mp3');
-  audio.play();
-  let audioTechno = new Audio('https://archive.org/download/XperienceAmbient/XperienceTechno.mp3');
-  audio.play();
-
-
-
+  
 }
 
 function repeatLoop(time) {
   
     let step = index % 16;
     let box;
+    if(step==0){
+      if(melodyOn !== melodyStart){
+        console.log(melodyOn +" --- "+ melodyStart)
+        multi.get(melodyStart).toMaster().stop()
+        multi.get(melodyOn).toMaster().start()
+      }
+      melodyStart = ""+melodyOn;
+    }
+    
 
     rows.forEach(function(row){
       if(row.className === 'active'){
@@ -98,9 +117,9 @@ function repeatLoop(time) {
       }
     })
 
+
+
     loops.forEach(function(loop, index){
-      
-      
       row=rows[step]
       box = loop.querySelector(`a-box:nth-child(${step + 1})`);
       if(box.className === 'active'){

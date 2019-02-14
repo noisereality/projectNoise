@@ -12,14 +12,32 @@ let ambient = document.querySelector("#ambientMelody")
 let electro = document.querySelector("#technoMelody")    
 let techno = document.querySelector("#electroMelody")
 
+
+
 ambient.addEventListener('click', function() {
-  if(this.calssName ==='inactive'){
+  if(this.className ==='inactive'){
     electro.className = 'inactive';
     techno.className = 'inactive';
     this.className = 'active';  }
+    melodyOn = "ambient";
+
+
 })
-electro.addEventListener('click')
-techno.addEventListener('click')
+electro.addEventListener('click', function() {
+  if(this.className ==='inactive'){
+    ambient.className = 'inactive';
+    techno.className = 'inactive';
+    this.className = 'active';  }
+    melodyOn = "electro";
+})
+techno.addEventListener('click', function() {
+  if(this.className ==='inactive'){
+    electro.className = 'inactive';
+    ambient.className = 'inactive';
+    this.className = 'active';  }
+    melodyOn = "techno";
+})
+
 
 box.forEach(function(elem){
   elem.addEventListener('click', function() {
