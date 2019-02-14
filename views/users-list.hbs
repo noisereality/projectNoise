@@ -3,15 +3,15 @@
     <a class="flex-item"href="/auth/signup">Signup</a>
     <a class="flex-item"href="/auth/logout">Logout</a>
   </nav>
-
-<h1>users</h1>
-<div class="container-users">
-{{#each user}}
-<ul>
-  <li class="flex-item-users">{{this.username}}
-    <a href="/profile/{{this.id}} ">profile</a>
-  </li>
-</ul>
-{{/each}}
+<div class="contain-center">
+  <h1>users</h1>
+  <div class="container-users">
+    {{#each user}}
+      <ul>
+        <li class="flex-item-users">{{this.username}}
+          <a href="/profile/{{this.id}} ">profile</a>
+        </li>
+      </ul>
+    {{/each}}
+  </div>
 </div>
-
