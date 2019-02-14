@@ -137,4 +137,18 @@ h3 {
 .contain-center h1 {
   font-size: 40px;
   margin: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
 } 
+
+.visible-scrollbar, .invisible-scrollbar {
+  width: 10em;
+  overflow: auto;
+}
+.invisible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  overflow-y: scroll;
+}
