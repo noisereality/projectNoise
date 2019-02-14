@@ -12,6 +12,13 @@
 <div class="contain-center">
 <h1>Profile</h1>
 <h3 class="flex-item-users">{{user.username}}</h3>
+{{#each user.xperiences}}
+<ul class="flex-item-xperiences">
+  <li>{{this.name}}
+    <a class="flex-item-users" href="/xperience/{{this.id}}">xperience</a>
+  </li>
+  </ul>
+{{/each}}
 {{#if editable}}
 <form  method='POST' action='/profile'>
   <p class="flex-item-users">Update profile</p>
