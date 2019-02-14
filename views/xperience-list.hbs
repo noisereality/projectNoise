@@ -4,13 +4,15 @@
     <a class="flex-item"href="/auth/logout">Logout</a>
   </nav>
 
-<h1>Xperience List</h1>
-<div class="container-users">
+<div class="contain-center">
+  <h1>Xperience List</h1>
+    <div class="container-users">
 {{#each xperience}}
-<ul>
-  <li class="flex-item-users" >{{this.name}}
-    <a class="flex-item-users" href="/xperience/{{this.id}} ">xperience</a>
+  <ul>
+    <li class="flex-item-users" >{{this.name}}
+      <a class="flex-item-users" href="/xperience/{{this.id}} ">xperience</a>
     </li>
-</ul>
-{{/each}}
-</div>
+  </ul>
+    {{/each}}
+  </div>
+</div>  

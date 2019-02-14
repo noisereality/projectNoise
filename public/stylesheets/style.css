@@ -10,6 +10,7 @@ body {
   font-size: 20px;}
 
 a {
+  /*font-family: monospace;*/
   color: #A2238D;
   align-items: flex-start;
   text-decoration: none;
@@ -21,7 +22,7 @@ h1 {
   font-weight: bold;
   text-align: center;
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 h2 {
@@ -30,7 +31,8 @@ h2 {
 }
 
 h3 {
-  text-align: center;
+  color: #A2238D;
+  font-size: 35px;
 }
 
 .container-nav {
@@ -94,6 +96,10 @@ h3 {
   overflow: hidden;
   display: inline;
   justify-content: center;
+}
+
+.container-users li {
+  font-size: 25px;
 }
 
 .container-signup {

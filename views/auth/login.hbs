@@ -3,16 +3,17 @@
     <a class="flex-item"href="/auth/signup">Signup</a>
     <a class="flex-item"href="/auth/logout">Logout</a>
   </nav>
-  
-<h2 class="flex-item-users">Login</h2>
+ 
+<div class="contain-center">
+  <h2 class="flex-item-users">Login</h2>
 
 <form action="/auth/login" method="POST" id="form-container">
   <label class="flex-item-users" for="username">Username</label>
-  <input class="flex-item-users" id="username" type="text" name="username" placeholder="JonSnow">
+   <input class="flex-item-users" id="username" type="text" name="username" placeholder="JonSnow">
 
-  <br><br>
+   <br><br>
 
-  <label class="flex-item-users" for="password">Password</label>
+   <label class="flex-item-users" for="password">Password</label>
   <input class="flex-item-users" id="password" type="password" name="password" placeholder="Your password">
   <br>
   {{#if message }}
@@ -27,4 +28,5 @@
     Don't have an account yet?
     <a class="flex-item-users" href="/auth/signup">Signup</a>
   </p>
-</form>
+ </form>
+</div> 
