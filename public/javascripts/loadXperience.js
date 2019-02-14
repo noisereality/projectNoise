@@ -3,9 +3,12 @@ let index = 0;
 let rows;
 let loops;
 
-function loadXperience(xperience, samples, xperienceName){
+function loadXperience(xperience, samples, xperienceName, enableSave){
     let xperienceEnt = document.querySelector("#xperience-ent");
-    let saveBtn = document.querySelector("#save-btn");
+    let saveBtn = document.querySelector("#save-btn-ent");
+    if(!enableSave){
+      saveBtn.innerHTML = "";
+    }
     xperienceEnt.innerHTML = "";
     xperienceEnt.setAttribute("name", xperienceName)
     let loopEnt
