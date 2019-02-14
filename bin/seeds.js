@@ -8,6 +8,7 @@ const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const Sample = require("../models/Sample");
+const Melody = require("../models/Melody");
 const Xperience = require("../models/Xperience");
 
 
@@ -21,6 +22,26 @@ mongoose
   .catch(err => {
     console.error('Error connecting to mongo', err)
   });
+
+let melodies = [
+  {
+    name: "ambient",
+    url: "https://ia601500.us.archive.org/20/items/XperienceAmbient/XperienceAmbient.mp3"
+  },
+  {
+    name: "techno",
+    url: "https://ia601500.us.archive.org/20/items/XperienceAmbient/XperienceTechno.mp3"
+  },
+  {
+    name: "electro",
+    url: "https://ia801500.us.archive.org/20/items/XperienceAmbient/XperienceElectro.mp3"
+  }
+]
+
+Melody.deleteMany()
+  .then(() => {
+    return Melody.create(melodies)
+  })
 
 let samples = [
   {

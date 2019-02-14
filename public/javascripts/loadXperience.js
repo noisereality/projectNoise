@@ -5,6 +5,7 @@ let loops;
 
 function loadXperience(xperience, samples, xperienceName){
     let xperienceEnt = document.querySelector("#xperience-ent");
+    let saveBtn = document.querySelector("#save-btn");
     xperienceEnt.innerHTML = "";
     xperienceEnt.setAttribute("name", xperienceName)
     let loopEnt

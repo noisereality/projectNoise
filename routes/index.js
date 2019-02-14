@@ -4,6 +4,7 @@ const ensureLogin = require('connect-ensure-login')
 const Xperience = require("../models/Xperience");
 const User = require('../models/User')
 const Sample = require('../models/Sample')
+const Melody = require('../models/Melody')
 
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
@@ -76,35 +77,47 @@ router.post('/profile', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, ne
 })
 
 router.get('/xperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-  Sample.find().then(samples =>{
-      res.render('xperience',{xperience: "undefined", samples: JSON.stringify(samples), xperienceName: JSON.stringify(req.query.xperienceName)})
-  }).catch(err => {
-    console.log(err);
+  var enableSave = true;
+  Melody.find()
+  .then(melodies => {
+    Sample.find().then(samples =>{
+        res.render('xperience',{xperience: "undefined", samples: JSON.stringify(samples),
+         xperienceName: JSON.stringify(req.query.xperienceName), melodies: JSON.stringify(melodies),
+         enableSave: JSON.stringify(enableSave)})
+    }).catch(err => {
+      console.log(err);
+    })
   })
 });
 
 router.get('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-  Sample.find().then(samples =>{
-    Xperience.findById(req.params.idXperience)
-    .populate("loops.sample")
-    .then(xperience => {
-      res.render('xperience',{xperience: JSON.stringify(xperience), samples: JSON.stringify(samples), xperienceName: JSON.stringify(xperience.name)})
-    })
-    .catch(err => {
+  var enableSave = false;
+  Melody.find()
+  .then(melodies => {
+    Sample.find().then(samples =>{
+      Xperience.findById(req.params.idXperience)
+      .populate("loops.sample")
+      .then(xperience => {
+        if(req.user._id == xperience.creator){
+          enableSave=true
+        }
+        res.render('xperience',{xperience: JSON.stringify(xperience), samples: JSON.stringify(samples),
+          xperienceName: JSON.stringify(xperience.name), melodies: JSON.stringify(melodies),
+          enableSave: JSON.stringify(enableSave)})
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }).catch(err => {
       console.log(err);
     })
-  }).catch(err => {
-    console.log(err);
   })
 });
 
 router.put('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-  
   Xperience.findById(req.params.idXperience)
   .then(xperience => {
-    console.log(xperience)
     res.render('xperience',{xperience: JSON.stringify(xperience)})
-    console.log(xperience)
   })
   .catch(err => {
     console.log(err);
@@ -114,7 +127,7 @@ router.put('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'),
 });
 
 router.post('/xperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-
+  req.body.xperience.creator = req.user._id
   Xperience.create(req.body.xperience)
   .then(xperience => {
     User.findById(req.user._id).populate("xperiences")

@@ -6,6 +6,7 @@ const xperienceSchema = new Schema({
   name: String,
   type: String,
   stars: Number,
+  creator: String,
   loops:[{
     sample: {type: Schema.Types.ObjectId, ref: 'Sample'},
     start:[]
