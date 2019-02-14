@@ -114,43 +114,47 @@ router.get('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'),
   })
 });
 
-router.put('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-  Xperience.findById(req.params.idXperience)
-  .then(xperience => {
-    res.render('xperience',{xperience: JSON.stringify(xperience)})
-  })
-  .catch(err => {
-    console.log(err);
-  })
-  let xperience =
-  Xperience.create()
-});
+// router.put('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
+//   Xperience.findById(req.params.idXperience)
+//   .then(xperience => {
+//     res.render('xperience',{xperience: JSON.stringify(xperience)})
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   })
+//   let xperience =
+//   Xperience.create()
+// });
 
 router.post('/xperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
   req.body.xperience.creator = req.user._id
-  Xperience.create(req.body.xperience)
-  .then(xperience => {
-    User.findById(req.user._id).populate("xperiences")
-    .then(user => {
-      let arrayXperiences = user.xperiences
-      arrayXperiences.push(xperience._id)
-      User.findByIdAndUpdate(req.user._id, {xperiences:arrayXperiences})
-      .then(users => {
-        console.log("ok")
+
+  Xperience.findOneAndUpdate({name:req.body.xperience.name, creator:req.user._id}, req.body.xperience)
+  .then(xper => {
+    if(!xper){
+      Xperience.create(req.body.xperience)
+      .then(xperience => {
+        User.findById(req.user._id).populate("xperiences")
+        .then(user => {
+          let arrayXperiences = user.xperiences
+          arrayXperiences.push(xperience._id)
+          User.findByIdAndUpdate(req.user._id, {xperiences:arrayXperiences})
+          .then(users => {
+            console.log("ok")
+          })
+          .catch(error => {
+          console.log(error)
+          });
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      }).catch(error => {
+        console.log(error)
       })
-      .catch(error => {
-      console.log(error)
-      });
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  }).catch(error => {
-    console.log(error)
+
+    }
   })
-
-
-  
 });
 
 router.delete('/xperience/:id', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
