@@ -70,6 +70,12 @@ function startSounds(multiPlayer){
 
 }
 
+function startMelodies(){
+  ambient = document.querySelectorAll("#ambientMelody")
+  electro = document.querySelectorAll("#technoMelody")
+  techno = document.querySelectorAll("#electroMelody")
+}
+
 function repeatLoop(time) {
   
     let step = index % 16;
