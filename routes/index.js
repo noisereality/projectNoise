@@ -85,7 +85,7 @@ router.get('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'),
     Xperience.findById(req.params.idXperience)
     .populate("loops.sample")
     .then(xperience => {
-      res.render('xperience',{xperience: JSON.stringify(xperience), samples: JSON.stringify(samples), xperienceName: xperience.name})
+      res.render('xperience',{xperience: JSON.stringify(xperience), samples: JSON.stringify(samples), xperienceName: JSON.stringify(xperience.name)})
     })
     .catch(err => {
       console.log(err);
