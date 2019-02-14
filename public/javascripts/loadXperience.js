@@ -4,14 +4,15 @@ let rows;
 let loops;
 
 function loadXperience(xperience, samples){
-  if(xperience){
-    xper = xperience;
     let xperienceEnt = document.querySelector("#xperience-ent");
     xperienceEnt.innerHTML = "";
     let loopEnt
     let newBox
+    let loop 
     samples.forEach((sample, index) =>{
-      let loop = xperience.loops.find(loop => loop.sample.name === sample.name )
+      if(xperience){
+        loop = xperience.loops.find(loop => loop.sample.name === sample.name )
+      }
       loopEnt = document.createElement("a-entity")
       loopEnt.setAttribute("class", "loop-ent")
       if(loop){
@@ -40,7 +41,6 @@ function loadXperience(xperience, samples){
     })
 
     loadData(samples)
-  }
 }
 
 function loadData(){
@@ -58,7 +58,7 @@ function loadData(){
 
 
 function startSounds(multiPlayer){
-  rows = document.querySelectorAll("a-box")
+  rows = document.querySelectorAll("#xperience-ent a-box")
   loops = document.querySelectorAll(".loop-ent")
   multi = multiPlayer;
   Tone.Transport.scheduleRepeat(repeatLoop, '16n');
