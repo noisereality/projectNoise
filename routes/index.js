@@ -15,31 +15,33 @@ router.get('/', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next) => {
 });
 
 router.get('/profile', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next) =>  {
-  User.findById(req.user._id)
-    .then(user => {
-      let editable = false
-      if (user.id == req.user.id){
-          editable = true
-      }
-      res.render('profile', {user, editable})
-    })
-    .catch(error => {
-      console.log(error)
-    })
+  User.findById(req.user._id).populate("xperiences")
+  .then(user => {
+    let editable = false
+    if (user.id == req.user.id){
+      editable = true
+    }
+    res.render('profile', {user, editable})
+  })
+  .catch(error => {
+    console.log(error)
+  })
 })
 
 router.get('/profile/:id', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-    User.findById(req.params.id)
-    .then(user => {
-      let editable = false
-      if (user.id == req.user.id){
-          editable = true
-      }
-      res.render('profile', {user, editable})
-    })
-    .catch(error => {
-      console.log(error)
-    })
+  User.findById(req.params.id).populate("xperiences")
+  .then(user => {
+    console.log(user.xperiences)
+    let xperiences = user.xperiences
+    let editable = false
+    if (user.id == req.user.id){
+      editable = true
+    }
+    res.render('profile', {user, editable, xperiences})
+  })
+  .catch(error => {
+    console.log(error)
+  })
 });
 
 router.post('/profile', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
@@ -70,6 +72,7 @@ router.post('/profile', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, ne
   .catch(error => {
   console.log(error)
   });
+
 })
 
 router.get('/xperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{

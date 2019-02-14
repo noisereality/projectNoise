@@ -114,6 +114,15 @@ h3 {
   line-height: 100px;
 }
 
+.flex-item-xperiences {
+  list-style-type: none;
+  font-family: monospace;
+  text-align: left;
+  padding-left: 0px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
 .flex-item-users {
   list-style-type: none;
   font-family: monospace;
@@ -124,3 +133,8 @@ h3 {
   display: grid;
   justify-content: center;
 }
+
+.contain-center h1 {
+  font-size: 40px;
+  margin: 0;
+} 
