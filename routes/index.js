@@ -73,7 +73,11 @@ router.post('/profile', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, ne
 })
 
 router.get('/xperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-  res.render('xperience')
+  Sample.find().then(samples =>{
+      res.render('xperience',{xperience: "undefined", samples: JSON.stringify(samples)})
+  }).catch(err => {
+    console.log(err);
+  })
 });
 
 router.get('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
@@ -91,7 +95,7 @@ router.get('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'),
   })
 });
 
-router.post('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
+router.put('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
   
   Xperience.findById(req.params.idXperience)
   .then(xperience => {
@@ -106,8 +110,8 @@ router.post('/xperience/:idXperience', ensureLogin.ensureLoggedIn('/auth/login')
   Xperience.create()
 });
 
-router.put('/xperience/:id', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
-  
+router.post('/xperience', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
+  console.log("ea")
 });
 
 router.delete('/xperience/:id', ensureLogin.ensureLoggedIn('/auth/login'), (req, res, next)=>{
