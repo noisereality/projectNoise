@@ -14,7 +14,7 @@ const Xperience = require("../models/Xperience");
 const bcryptSalt = 10;
 
 mongoose
-  .connect('mongodb://localhost/noise-reality', { useNewUrlParser: true })
+  .connect('mongodb://dani:31303828@cluster0-shard-00-00-yju5k.mongodb.net:27017,cluster0-shard-00-01-yju5k.mongodb.net:27017,cluster0-shard-00-02-yju5k.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true', { useNewUrlParser: true })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
