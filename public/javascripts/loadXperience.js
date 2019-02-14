@@ -73,10 +73,16 @@ function startSounds(multiPlayer){
 
 }
 
-function startMelodies(){
-  ambient = document.querySelectorAll("#ambientMelody")
-  electro = document.querySelectorAll("#technoMelody")
-  techno = document.querySelectorAll("#electroMelody")
+function loadMelodies(audioAmbient, audioElectro, audioTechno) {
+  let audioAmbient = new Audio('https://archive.org/download/XperienceAmbient/XperienceAmbient.mp3');
+  audio.play();
+  let audioElectro = new Audio('https://archive.org/download/XperienceAmbient/XperienceElectro.mp3');
+  audio.play();
+  let audioTechno = new Audio('https://archive.org/download/XperienceAmbient/XperienceTechno.mp3');
+  audio.play();
+
+
+
 }
 
 function repeatLoop(time) {

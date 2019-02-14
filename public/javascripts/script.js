@@ -8,6 +8,19 @@ let xperience = document.querySelector('#xperience-ent');
 let box = document.querySelectorAll('#xperience-ent a-box');
 let saveBtn = document.querySelector('#save-btn');
 
+let ambient = document.querySelector("#ambientMelody")
+let electro = document.querySelector("#technoMelody")    
+let techno = document.querySelector("#electroMelody")
+
+ambient.addEventListener('click', function() {
+  if(this.calssName ==='inactive'){
+    electro.className = 'inactive';
+    techno.className = 'inactive';
+    this.className = 'active';  }
+})
+electro.addEventListener('click')
+techno.addEventListener('click')
+
 box.forEach(function(elem){
   elem.addEventListener('click', function() {
     if(this.className === 'active'){
