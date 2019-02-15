@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 let xperience = document.querySelector('#xperience-ent');
 let box = document.querySelectorAll('#xperience-ent a-box');
 let saveBtn = document.querySelector('#save-btn');
+let exitBtn = document.querySelector('#exit-btn');
 
 let ambient = document.querySelector("#ambientMelody")
 let electro = document.querySelector("#technoMelody")    
@@ -77,6 +78,13 @@ if(saveBtn){
     axios.post('/xperience', {
       xperience: newXperience
     })
+  })
+}
+
+
+if(exitBtn){
+  exitBtn.addEventListener('click', function() {
+    document.location.href="/";
   })
 }
 
