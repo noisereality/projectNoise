@@ -1,45 +1,30 @@
 <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
 <script src="/javascripts/loadXperience.js"></script>
 <a-scene>
+  <a-assets>
+    <img id="exit" src="/images/exit.png">
+    <img id="save" src="/images/save.png">
+  </a-assets>
   <a-camera>
     <a-cursor></a-cursor>
   </a-camera>
   <a-entity laser-controls line="color: red; opacity: 0.75"></a-entity>
   <a-entity tracked-controls="controller: 0; idPrefix: OpenVR"></a-entity>
-  {{!-- <a-entity light="type:directional; castShadow:true;" position="2 5 1"></a-entity> --}}
-  {{!-- <a-light type="spot" color="#FFFFFF" position="-10 10 0" look-at="#cen"></a-light>
-  <a-light class="foco" type="point" color="#0000FF" position="10 20 10"></a-light> --}}
   
-  <a-sphere class="active" id="ambientMelody" color="#CCC" position="-4 6 -6" radius="1"></a-sphere>
-  <a-sphere class="inactive" id="electroMelody" color="#CCC" position="0 6 -6" radius="1"></a-sphere>
-  <a-sphere class="inactive" id="technoMelody" color="#CCC" position="4 6 -6" radius="1"></a-sphere>
+  
+  <a-sphere class="active" id="ambientMelody" color="#A2238D" position="-4 6 -6" radius="0.7"></a-sphere>
+  <a-sphere class="inactive" id="electroMelody" color="#CCC" position="0 6 -6" radius="0.7"></a-sphere>
+  <a-sphere class="inactive" id="technoMelody" color="#CCC" position="4 6 -6" radius="0.7"></a-sphere>
+
+  
+  <a-image src="#exit" position="-6.5 2.1 -2.2" width="0.7" height="0.7" rotation="0 60 0"></a-image>
+  <a-image src="#save" position="6.5 2.1 -2.2" width="0.7" height="0.7" rotation="0 -60 0"></a-image>
+
+  
 
   <a-entity id="xperience-ent">
 
-    {{!-- <a-entity id="loop-ent">
-      <a-box position="-4 6 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      <a-box position="-2 6 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      <a-box position="0 6 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      <a-box position="2 6 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-    
-
-      <a-box position="-4 4 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      <a-box position="-2 4 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      <a-box position="0 4 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      <a-box position="2 4 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      
-
-      <a-box position="-4 2 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      <a-box position="-2 2 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      <a-box position="0 2 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      <a-box position="2 2 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      
-
-      <a-box position="-4 0 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      <a-box position="-2 0 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      <a-box position="0 0 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-      <a-box position="2 0 -5" rotation="0 0 0" color="#CCCCCC"></a-box>
-    </a-entity> --}}
+   
   </a-entity>
   
   <a-entity id="save-btn-ent">
@@ -49,8 +34,9 @@
     <a-box id="exit-btn" position="-6 1 -2" rotation="30 240 0" color="#FF0000"></a-box>
   </a-entity>
 
-  <a-plane position="0 -1 -4" rotation="-90 0 0" width="30" height="30" color="#444444"></a-plane>  
-  <a-sky color="#CCCCFF"></a-sky>
+  {{!-- <a-plane position="0 -1 -4" rotation="-90 0 0" width="30" height="30" color="#444444"></a-plane>   --}}
+  <a-cylinder color="#666666" position="0 -1 0" width="6" height="2" radius="4"segments-radial="8"></a-cylinder>
+  <a-sky color="#222222"></a-sky>
   
 </a-scene>
 <script>

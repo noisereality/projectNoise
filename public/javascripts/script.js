@@ -19,7 +19,12 @@ ambient.addEventListener('click', function() {
   if(this.className ==='inactive'){
     electro.className = 'inactive';
     techno.className = 'inactive';
-    this.className = 'active';  }
+    this.className = 'active';  
+
+    electro.setAttribute('color', '#CCCCCC');
+    techno.setAttribute('color', '#CCCCCC');
+    this.setAttribute('color', '#A2238D');
+  }
     melodyOn = "ambient";
 
 
@@ -28,14 +33,24 @@ electro.addEventListener('click', function() {
   if(this.className ==='inactive'){
     ambient.className = 'inactive';
     techno.className = 'inactive';
-    this.className = 'active';  }
+    this.className = 'active';  
+
+    ambient.setAttribute('color', '#CCCCCC');
+    techno.setAttribute('color', '#CCCCCC');
+    this.setAttribute('color', '#A2238D');
+  }
     melodyOn = "electro";
 })
 techno.addEventListener('click', function() {
   if(this.className ==='inactive'){
     electro.className = 'inactive';
     ambient.className = 'inactive';
-    this.className = 'active';  }
+    this.className = 'active';  
+
+    ambient.setAttribute('color', '#CCCCCC');
+    electro.setAttribute('color', '#CCCCCC');
+    this.setAttribute('color', '#A2238D');
+  }
     melodyOn = "techno";
 })
 
